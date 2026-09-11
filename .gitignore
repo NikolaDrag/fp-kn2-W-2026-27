@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+*~
+*.bak
+
+# Racket
+compiled/
+*.zo
+*.dep
+
+# Haskell (за следващите седмици)
+dist-newstyle/
+.stack-work/
+*.hi
+*.o
+*.exe
+.ghc.environment.*
