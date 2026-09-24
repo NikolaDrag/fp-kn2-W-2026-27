@@ -25,7 +25,7 @@
 ```text
 fp-kn2-W-2026-27/
 ├── README.md                 ← вие сте тук
-├── cheatsheet.md             ← основни Racket функции
+├── racket-cheatsheet.md             ← основни Racket функции
 ├── haskell-cheatsheet.md     ← основни Haskell функции
 ├── THANKS.md                 ← стена с благодарности
 ├── .gitignore
@@ -42,7 +42,7 @@ fp-kn2-W-2026-27/
 
 | Файл | Какво е |
 |------|---------|
-| [cheatsheet.md](cheatsheet.md) | Racket. Специални форми, числа, списъци |
+| [racket-cheatsheet.md](racket-cheatsheet.md) | Racket. Специални форми, числа, списъци |
 | [haskell-cheatsheet.md](haskell-cheatsheet.md) | Haskell. Образци, списъци, типове, вход и изход |
 
 | Седмица | Тема |
@@ -79,7 +79,7 @@ fp-kn2-W-2026-27/
 3. `tasks.md` са задачите, които решаваме заедно на упражнението.
    Които не стигнем, остават за домашно.
 4. `solutions.rkt` / `.hs` са решенията към задачите от седмицата.
-5. [cheatsheet.md](cheatsheet.md) е справка за Racket.
+5. [racket-cheatsheet.md](racket-cheatsheet.md) е справка за Racket.
    [haskell-cheatsheet.md](haskell-cheatsheet.md) е справка за Haskell.
 
 ## Допълнителни ресурси
