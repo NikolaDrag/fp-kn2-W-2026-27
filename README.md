@@ -24,20 +24,26 @@
 
 ```text
 fp-kn2-W-2026-27/
-├── README.md              ← вие сте тук
-├── cheatsheet.md          ← основни Racket функции
-├── THANKS.md              ← стена с благодарности
+├── README.md                 ← вие сте тук
+├── cheatsheet.md             ← основни Racket функции
+├── haskell-cheatsheet.md     ← основни Haskell функции
+├── THANKS.md                 ← стена с благодарности
 ├── .gitignore
-└── week-01/ … week-NN/    ← по една папка на седмица
-    ├── README.md          ← теория и бележки за упражнението
-    ├── tasks.md           ← задачи на упражнението. недовършените остават за домашно
-    └── solutions.rkt      ← решения (Racket). по-късно .hs
+└── week-01/ … week-NN/       ← по една папка на седмица
+    ├── README.md             ← теория и бележки за упражнението
+    ├── tasks.md              ← задачи на упражнението
+    └── solutions.rkt / .hs   ← решения
 ```
 
 Хронологията е по седмици. Всяка следваща седмица стъпва върху
 предишните. Следвайте ги по ред.
 
 ## Бързи връзки
+
+| Файл | Какво е |
+|------|---------|
+| [cheatsheet.md](cheatsheet.md) | Racket. Специални форми, числа, списъци, потоци |
+| [haskell-cheatsheet.md](haskell-cheatsheet.md) | Haskell. Образци, списъци, типове, функтор |
 
 | Седмица | Тема |
 |--------|------|
@@ -73,7 +79,8 @@ fp-kn2-W-2026-27/
 3. `tasks.md` са задачите, които решаваме заедно на упражнението.
    Които не стигнем, остават за домашно.
 4. `solutions.rkt` / `.hs` са решенията към задачите от седмицата.
-5. [cheatsheet.md](cheatsheet.md) е справка за вградените Racket функции.
+5. [cheatsheet.md](cheatsheet.md) е справка за Racket.
+   [haskell-cheatsheet.md](haskell-cheatsheet.md) е справка за Haskell.
 
 ## Допълнителни ресурси
 
