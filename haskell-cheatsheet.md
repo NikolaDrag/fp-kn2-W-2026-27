@@ -5,42 +5,32 @@
 
 Резултатите по-долу са записани като `израз -- → резултат`.
 
-## Типове, if, пазачи, образци
+## Ключови думи
 
 ```haskell
-mymin :: Int -> Int -> Int
-mymin a b = if a < b then a else b
--- mymin 10 2 -- → 2
+if 1 < 2 then 10 else 20          -- → 10
 
-abs' n
-  | n < 0     = -n
-  | otherwise = n
--- abs' (-3) -- → 3
-
-len :: [a] -> Int
-len []     = 0
-len (_:xs) = 1 + len xs
--- len [1,2,3] -- → 3
-
-sqAvg a b = average (a * a) (b * b)
-  where average x y = (x + y) / 2
--- sqAvg 3 4 -- → 12.5
+case [1,2,3] of
+  []  -> 0
+  x:_ -> x                        -- → 1
 ```
 
-`if` иска израз от тип `Bool`. Само `True` и `False` са истина и лъжа.
+`if` иска `Bool`. Само `True` и `False` са истина и лъжа.
 
-Пазачите `|` се проверяват отгоре надолу. `otherwise` е последният клон.
+`|` и `otherwise` са пазачи. Проверяват се отгоре надолу.
+`where` слага локално име след тялото.
+`_` е образец без име. `(x:xs)` е образец за глава и опашка.
+`::` пише тип. `->` е стрелка в тип на функция.
+`data` дефинира нов тип. `type` дава друго име на съществуващ тип.
+`deriving`, `instance` и `class` са за класовете.
+`do` нарежда стъпки в `IO`.
+`let` и `in` кръщават локално име преди тялото.
 
-Образецът `(x:xs)` разделя списък на глава и опашка. `[]` е празният списък.
-`_` е образец, който не кръщава стойността.
-
-`where` слага помощни имена след тялото. Виждат аргументите на функцията.
-
-Скобите и `$` групират едно и също. `$` е със слаб приоритет и маха едни скоби.
+Скобите и `$` групират едно и също. `$` е със слаб приоритет.
 
 ```haskell
-print (mymin 10 2)
-print $ mymin 10 2
+print (max 4 1)
+print $ max 4 1
 ```
 
 ## Числа
@@ -55,7 +45,6 @@ mod 10 3        -- → 1
 10 `div` 3      -- → 3. инфиксно
 10 `mod` 3      -- → 1
 abs (-3)        -- → 3
-min 4 1         -- → 1
 max 4 1         -- → 4
 odd 11          -- → True
 even 10         -- → True
@@ -79,7 +68,6 @@ null [1]                    -- → False
 length [1,2,3]              -- → 3
 reverse [1,2,3]             -- → [3,2,1]
 take 2 [0,1,2,3]            -- → [0,1]
-drop 2 [0,1,2,3]            -- → [2,3]
 [1..5]                      -- → [1,2,3,4,5]
 [1,3..9]                    -- → [1,3,5,7,9]
 zip [1,2] "ab"              -- → [(1,'a'),(2,'b')]
@@ -112,14 +100,12 @@ filter odd [1,2,3,4,5]            -- → [1,3,5]
 filter (>= 5) [3,5,7]             -- → [5,7]
 foldl (+) 0 [1,2,3]               -- → 6
 foldr (:) [] [1,2,3]              -- → [1,2,3]
-foldl (flip (:)) [] [1,2,3]       -- → [3,2,1]
 sum [1,2,3]                       -- → 6
 product [2,3,4]                   -- → 24
 and [True, False]                 -- → False
 all even [2,4,6]                  -- → True
 zipWith (==) "ab" "ac"           -- → [True,False]
 maximum [1,3,2]                   -- → 3
-minimum [1,3,2]                   -- → 1
 ```
 
 Частично прилагане и сечение:
@@ -143,13 +129,13 @@ flip (-) 10 3                     -- → -7
 ```
 
 Сортиране и групиране. `sort`, `sortOn`, `group`, `groupBy` и
-`maximumBy` са в `Data.List`.
+`maximumBy` са в `Data.List`. `on` е в `Data.Function`.
 
 ```haskell
 import Data.List
 import Data.Function
 
-sort [3,1,2]                              -- → [1,2,3]
+
 sortOn snd [(1,3),(2,1)]                  -- → [(2,1),(1,3)]
 group "aabccc"                            -- → ["aa","b","ccc"]
 groupBy (\a b -> a == b) [1,1,2,2,1]      -- → [[1,1],[2,2],[1]]
@@ -168,7 +154,6 @@ maximumBy (compare `on` length) ["a","bbb","cc"]
 "ab" ++ "c"                       -- → "abc"
 reverse "ab"                      -- → "ba"
 show 2                            -- → "2"
-read "2" :: Int                   -- → 2
 ```
 
 `Data.Char`:
@@ -181,48 +166,29 @@ chr 65                            -- → 'A'
 digitToInt '7'                    -- → 7
 isDigit '7'                       -- → True
 isDigit 'a'                       -- → False
+toUpper 'a'                       -- → 'A'
 ```
 
-Главна латинска буква от малка: `chr (ord c - ord 'a' + ord 'A')`.
+## Вградени типове и класове
 
-## Алгебрични типове
+`Bool`, `Int`, `Integer`, `Double`, `Char`, `String`, списъкът `[]`,
+двойката `(a, b)`, `Maybe`, `Either` и `IO` са вградени.
+
+`True` и `False` са двете стойности на `Bool`.
+`Just` носи стойност в `Maybe`. `Nothing` е липса на стойност.
+`Left` и `Right` са двата варианта на `Either`.
 
 ```haskell
-data Color = Red | Green | Blue
-  deriving (Eq, Show)
-
-Red == Red                        -- → True
-show Red                          -- → "Red"
-
-data Shape = Circle Double
-           | Rectangle Double Double
-
-area :: Shape -> Double
-area (Circle r)      = pi * r * r
-area (Rectangle a b) = a * b
-
-data BTree a = Empty | Node a (BTree a) (BTree a)
-  deriving Show
+not False                         -- → True
+not True                          -- → False
+maybe 0 (+ 1) (Just 5)            -- → 6. има стойност, прилага се (+ 1)
+maybe 0 (+ 1) Nothing             -- → 0. няма стойност, връща се първият аргумент
+either show id (Left 1)            -- → "1". Left вика първата функция, show
+either show id (Right "ok")         -- → "ok". Right вика втората функция, id
 ```
 
-Името на типа и конструкторите започват с главна буква.
-`deriving (Eq, Show)` дава `==` и `show`. Свой `show` се пише с
-`instance Show Shape where`.
-
-`type` дава друго име на съществуващ тип. Не прави нов тип.
-
-```haskell
-type Pair = (Int, Int)
-```
-
-Класът ограничава типа. `Num a` значи, че `a` се събира.
-`Eq a` значи, че стойностите се сравняват с `==`.
-
-```haskell
-sumTree :: Num a => BTree a -> a
-sumTree Empty          = 0
-sumTree (Node v lt rt) = v + sumTree lt + sumTree rt
-```
+`Eq`, `Ord`, `Num`, `Show` и `Functor` са вградени класове.
+`==` иска `Eq`. `<` иска `Ord`. `+` иска `Num`. `show` иска `Show`.
 
 ## Функтор
 

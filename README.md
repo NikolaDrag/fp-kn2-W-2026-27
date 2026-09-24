@@ -42,8 +42,8 @@ fp-kn2-W-2026-27/
 
 | Файл | Какво е |
 |------|---------|
-| [cheatsheet.md](cheatsheet.md) | Racket. Специални форми, числа, списъци, потоци |
-| [haskell-cheatsheet.md](haskell-cheatsheet.md) | Haskell. Образци, списъци, типове, функтор |
+| [cheatsheet.md](cheatsheet.md) | Racket. Специални форми, числа, списъци |
+| [haskell-cheatsheet.md](haskell-cheatsheet.md) | Haskell. Образци, списъци, типове, вход и изход |
 
 | Седмица | Тема |
 |--------|------|
