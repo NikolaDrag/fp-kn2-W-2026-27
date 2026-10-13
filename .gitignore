@@ -8,10 +8,11 @@ compiled/
 *.zo
 *.dep
 
-# Решения от седмица 2 нататък. Седмица 1 остава в хранилището.
+# Решения от седмица 3 нататък. Седмици 1 и 2 остават в хранилището.
 week-*/solutions.rkt
 week-*/solutions.hs
 !week-01/solutions.rkt
+!week-02/solutions.rkt
 
 # Haskell (за следващите седмици)
 dist-newstyle/
