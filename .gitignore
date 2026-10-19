@@ -8,11 +8,13 @@ compiled/
 *.zo
 *.dep
 
-# Решения от седмица 3 нататък. Седмици 1 и 2 остават в хранилището.
+# Решенията са скрити. Отключените седмици са с !.
 week-*/solutions.rkt
 week-*/solutions.hs
 !week-01/solutions.rkt
 !week-02/solutions.rkt
+!week-03/solutions.rkt
+
 
 # Haskell (за следващите седмици)
 dist-newstyle/
